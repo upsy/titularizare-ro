@@ -110,4 +110,18 @@ export const courseSessions: CourseSession[] = [
     category: "Metodica",
     examSubject: "Subiectul III",
   },
+  {
+    id: "curs-2026-02-26",
+    date: "2026-02-26",
+    displayDate: "26 Februarie 2026",
+    title: "Lectura educatoarei și Repovestirea — modele de eseu (Subiectul III, Ex. 1)",
+    description:
+      "Definiția și desfășurarea lecturii educatoarei (citire din carte + explicare cuvinte necunoscute), " +
+      "definiția și desfășurarea repovestirii pe bază de imagini (realizată de copii), " +
+      "diferențele între lectură, povestire și repovestire, imagini pe grupe de vârstă.",
+    topicIds: ["edu-ped-dlc-lectura-repovestire"],
+    status: "complete",
+    category: "Metodica",
+    examSubject: "Subiectul III",
+  },
 ];

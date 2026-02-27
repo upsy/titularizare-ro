@@ -16,6 +16,7 @@ import { eduRomanaModernismLessons } from "./edu-romana-modernism";
 import { eduRomanaNeomodernismLessons } from "./edu-romana-neomodernism";
 import { eduRomanaComediaLessons } from "./edu-romana-comedia";
 import { eduPedagogieDlcPovestireLessons } from "./edu-pedagogie-dlc-povestire";
+import { eduPedagogieDlcLecturaRepovestireLessons } from "./edu-pedagogie-dlc-lectura-repovestire";
 
 const allLessons: Lesson[] = [
   ...eduLimbaComunicareLessons,
@@ -35,6 +36,7 @@ const allLessons: Lesson[] = [
   ...eduRomanaNeomodernismLessons,
   ...eduRomanaComediaLessons,
   ...eduPedagogieDlcPovestireLessons,
+  ...eduPedagogieDlcLecturaRepovestireLessons,
 ];
 
 export function getLessonByTopicId(topicId: string): Lesson | undefined {
