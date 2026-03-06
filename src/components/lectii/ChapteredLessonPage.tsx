@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -12,17 +12,29 @@ import {
   ChevronRight,
   ClipboardCheck,
   FileText,
+  Volume2,
+  Layers,
 } from "lucide-react";
-import { Lesson } from "@/types/lectii";
+import { Lesson, AudioSegment } from "@/types/lectii";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useAudioPlayer } from "@/hooks/useAudioPlayer";
 import { cn } from "@/lib/utils";
 import { ChapterSection } from "./ChapterSection";
 import { QuizVariantSection } from "./QuizVariantSection";
 import { QuizSection } from "./QuizSection";
+import { AudioPlayerBar } from "./AudioPlayerBar";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/Accordion";
+import { generateFlashcardDeck } from "@/lib/flashcard-generator";
+import { FlashcardPlayer } from "@/components/flashcards/FlashcardPlayer";
+
+const SPEED_CYCLE = [1, 1.25, 1.5];
+
+// Compensate for React render pipeline latency (setState → useMemo → useEffect → DOM).
+// Without this, the word highlight visually lags behind the spoken audio.
+const WORD_HIGHLIGHT_LEAD_S = 0.35;
 
 interface ChapteredLessonPageProps {
   lesson: Lesson;
@@ -32,8 +44,11 @@ interface ChapteredLessonPageProps {
 export function ChapteredLessonPage({ lesson, backTo }: ChapteredLessonPageProps) {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+  const [mode, setMode] = useState<"lesson" | "flashcards">("lesson");
   const stepperRef = useRef<HTMLDivElement>(null);
   const chapters = lesson.chapters!;
+
+  const flashcardDeck = useMemo(() => generateFlashcardDeck(lesson), [lesson]);
 
   // Total steps = chapters + 1 (quiz step at the end)
   const totalSteps = chapters.length + 1;
@@ -59,6 +74,88 @@ export function ChapteredLessonPage({ lesson, backTo }: ChapteredLessonPageProps
     [setCompletedChapters]
   );
 
+  // Audio player
+  const audio = useAudioPlayer();
+  const [audioChapterIndex, setAudioChapterIndex] = useState<number | null>(null);
+  const isAudioActive = audioChapterIndex !== null;
+
+  // Calculate active block from currentTime
+  const activeBlock = useMemo(() => {
+    if (audioChapterIndex == null || !audio.isPlaying) return null;
+    const chapter = chapters[audioChapterIndex];
+    if (!chapter?.audio) return null;
+
+    const segments = chapter.audio.segments;
+    const t = audio.currentTime;
+
+    // Find the segment where startTime <= t < endTime
+    for (let i = segments.length - 1; i >= 0; i--) {
+      if (t >= segments[i].startTime && t < segments[i].endTime) {
+        return {
+          sectionIndex: segments[i].sectionIndex,
+          blockIndex: segments[i].blockIndex,
+        };
+      }
+    }
+
+    // If past the last segment, highlight the last block
+    if (segments.length > 0 && t >= segments[segments.length - 1].endTime) {
+      const last = segments[segments.length - 1];
+      return { sectionIndex: last.sectionIndex, blockIndex: last.blockIndex };
+    }
+
+    return null;
+  }, [audioChapterIndex, audio.currentTime, audio.isPlaying, chapters]);
+
+  // Calculate active word index from currentTime
+  const activeWordIdx = useMemo(() => {
+    if (audioChapterIndex == null || !audio.isPlaying) return -1;
+    const chapter = chapters[audioChapterIndex];
+    if (!chapter?.audio) return -1;
+
+    const segments = chapter.audio.segments;
+    // Add lead time to compensate for render pipeline latency
+    const t = audio.currentTime + WORD_HIGHLIGHT_LEAD_S;
+
+    // Find the active segment with wordTimes
+    let activeSeg: AudioSegment | null = null;
+    for (let i = segments.length - 1; i >= 0; i--) {
+      if (segments[i].wordTimes && t >= segments[i].startTime && t < segments[i].endTime) {
+        activeSeg = segments[i];
+        break;
+      }
+    }
+    if (!activeSeg?.wordTimes) return -1;
+
+    // Binary search within segment's wordTimes
+    const wt = activeSeg.wordTimes;
+    let lo = 0, hi = wt.length - 1;
+    while (lo < hi) {
+      const mid = (lo + hi + 1) >> 1;
+      if (wt[mid] <= t) lo = mid;
+      else hi = mid - 1;
+    }
+
+    // Compute global offset: sum of word counts from previous segments with wordTimes
+    let globalOffset = 0;
+    for (const seg of segments) {
+      if (seg === activeSeg) break;
+      if (seg.wordTimes) {
+        globalOffset += seg.wordTimes.length;
+      }
+    }
+
+    return globalOffset + lo;
+  }, [audioChapterIndex, audio.currentTime, audio.isPlaying, chapters]);
+
+  // Stop audio when changing chapters
+  useEffect(() => {
+    if (audioChapterIndex !== null && audioChapterIndex !== currentStep) {
+      audio.cleanup();
+      setAudioChapterIndex(null);
+    }
+  }, [currentStep]); // eslint-disable-line react-hooks/exhaustive-deps
+
   // Scroll listener for back-to-top
   useEffect(() => {
     const handleScroll = () => {
@@ -73,11 +170,35 @@ export function ChapteredLessonPage({ lesson, backTo }: ChapteredLessonPageProps
     stepperRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
+  const handleListenClick = useCallback(() => {
+    const chapter = chapters[currentStep];
+    if (!chapter?.audio) return;
+
+    if (audioChapterIndex === currentStep) {
+      // Same chapter — toggle play/pause
+      audio.toggle();
+    } else {
+      // New chapter — load and play
+      audio.loadAndPlay(chapter.audio.src);
+      setAudioChapterIndex(currentStep);
+    }
+  }, [currentStep, audioChapterIndex, chapters, audio]);
+
+  const handleAudioClose = useCallback(() => {
+    audio.cleanup();
+    setAudioChapterIndex(null);
+  }, [audio]);
+
+  const handleRateChange = useCallback(() => {
+    const currentIdx = SPEED_CYCLE.indexOf(audio.playbackRate);
+    const nextRate = SPEED_CYCLE[(currentIdx + 1) % SPEED_CYCLE.length];
+    audio.setRate(nextRate);
+  }, [audio]);
+
   const isFirst = currentStep === 0;
-  const isLast = currentStep === totalSteps - 1;
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+    <div className={cn("mx-auto max-w-4xl px-4 py-8 sm:px-6", isAudioActive && "pb-24")}>
       {/* Navigation */}
       <div className="mb-6">
         <Link href={backTo.href}>
@@ -100,6 +221,22 @@ export function ChapteredLessonPage({ lesson, backTo }: ChapteredLessonPageProps
           </Badge>
           <Badge variant="default">Lecție</Badge>
           <Badge variant="secondary">{chapters.length} capitole</Badge>
+          {flashcardDeck.cards.length > 0 && (
+            <>
+              <button
+                onClick={() => setMode(mode === "lesson" ? "flashcards" : "lesson")}
+                className={cn(
+                  "flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-all",
+                  mode === "flashcards"
+                    ? "bg-violet-100 text-violet-700 ring-1 ring-violet-300"
+                    : "bg-slate-100 text-slate-600 hover:bg-violet-50 hover:text-violet-600"
+                )}
+              >
+                <Layers className="h-3.5 w-3.5" />
+                Flashcards ({flashcardDeck.cards.length})
+              </button>
+            </>
+          )}
         </div>
 
         {/* Objectives — border-l accent, no card */}
@@ -142,66 +279,81 @@ export function ChapteredLessonPage({ lesson, backTo }: ChapteredLessonPageProps
         )}
       </header>
 
-      {/* Progress bar */}
-      <div className="mb-6">
-        <div className="mb-2 flex items-center justify-between">
-          <span className="text-sm font-medium text-foreground">Progres lecție</span>
-          <span className="text-sm text-muted">
-            {completedChapters.length}/{chapters.length} capitole
-          </span>
+      {/* Progress bar — hidden in flashcard mode */}
+      {mode === "lesson" && (
+        <div className="mb-6">
+          <div className="mb-2 flex items-center justify-between">
+            <span className="text-sm font-medium text-foreground">Progres lecție</span>
+            <span className="text-sm text-muted">
+              {completedChapters.length}/{chapters.length} capitole
+            </span>
+          </div>
+          <ProgressBar
+            value={completedChapters.length}
+            max={chapters.length}
+            color={completedChapters.length === chapters.length ? "success" : "primary"}
+          />
         </div>
-        <ProgressBar
-          value={completedChapters.length}
-          max={chapters.length}
-          color={completedChapters.length === chapters.length ? "success" : "primary"}
-        />
-      </div>
+      )}
 
-      {/* Stepper — chapters + quiz as final step */}
-      <div ref={stepperRef} className="mb-8 scroll-mt-4 overflow-x-auto">
-        <div className="flex items-center justify-center gap-1">
-          {chapters.map((ch, i) => {
-            const done = isChapterDone(i);
-            const active = i === currentStep;
-            return (
-              <button
-                key={ch.id}
-                onClick={() => goToStep(i)}
-                className={cn(
-                  "flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold transition-all",
-                  done && !active && "bg-emerald-500 text-white",
-                  active && "bg-blue-600 text-white ring-2 ring-blue-300 ring-offset-2",
-                  !done && !active && "border-2 border-slate-300 text-slate-400 hover:border-blue-400 hover:text-blue-500"
-                )}
-                aria-label={`Capitolul ${i + 1}: ${ch.title}`}
-                aria-current={active ? "step" : undefined}
-              >
-                {done && !active ? (
-                  <Check className="h-4 w-4" />
-                ) : (
-                  i + 1
-                )}
-              </button>
-            );
-          })}
-          {/* Quiz step */}
-          <button
-            onClick={() => goToStep(quizStepIndex)}
-            className={cn(
-              "flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all",
-              isOnQuiz && "bg-violet-600 text-white ring-2 ring-violet-300 ring-offset-2",
-              !isOnQuiz && "border-2 border-slate-300 text-slate-400 hover:border-violet-400 hover:text-violet-500"
-            )}
-            aria-label="Evaluare finală"
-            aria-current={isOnQuiz ? "step" : undefined}
-          >
-            <ClipboardCheck className="h-4 w-4" />
-          </button>
+      {/* Stepper — hidden in flashcard mode */}
+      {mode === "lesson" && (
+        <div ref={stepperRef} className="mb-8 scroll-mt-4 overflow-x-auto">
+          <div className="flex items-center justify-center gap-1">
+            {chapters.map((ch, i) => {
+              const done = isChapterDone(i);
+              const active = i === currentStep;
+              return (
+                <button
+                  key={ch.id}
+                  onClick={() => goToStep(i)}
+                  className={cn(
+                    "flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold transition-all",
+                    done && !active && "bg-emerald-500 text-white",
+                    active && "bg-blue-600 text-white ring-2 ring-blue-300 ring-offset-2",
+                    !done && !active && "border-2 border-slate-300 text-slate-400 hover:border-blue-400 hover:text-blue-500"
+                  )}
+                  aria-label={`Capitolul ${i + 1}: ${ch.title}`}
+                  aria-current={active ? "step" : undefined}
+                >
+                  {done && !active ? (
+                    <Check className="h-4 w-4" />
+                  ) : (
+                    i + 1
+                  )}
+                </button>
+              );
+            })}
+            {/* Quiz step */}
+            <button
+              onClick={() => goToStep(quizStepIndex)}
+              className={cn(
+                "flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all",
+                isOnQuiz && "bg-violet-600 text-white ring-2 ring-violet-300 ring-offset-2",
+                !isOnQuiz && "border-2 border-slate-300 text-slate-400 hover:border-violet-400 hover:text-violet-500"
+              )}
+              aria-label="Evaluare finală"
+              aria-current={isOnQuiz ? "step" : undefined}
+            >
+              <ClipboardCheck className="h-4 w-4" />
+            </button>
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* Flashcard mode */}
+      {mode === "flashcards" && (
+        <div className="mb-8">
+          <FlashcardPlayer
+            topicId={lesson.topicId}
+            cards={flashcardDeck.cards}
+            title={flashcardDeck.title}
+          />
+        </div>
+      )}
 
       {/* Step Content */}
-      {isProgressLoaded ? (
+      {mode === "lesson" && isProgressLoaded ? (
         <div>
           {isOnQuiz ? (
             /* Quiz step */
@@ -243,7 +395,7 @@ export function ChapteredLessonPage({ lesson, backTo }: ChapteredLessonPageProps
                       currentStep + 1
                     )}
                   </span>
-                  <div>
+                  <div className="flex-1">
                     <h2 className="text-lg font-bold text-foreground sm:text-xl">
                       {chapters[currentStep].title}
                     </h2>
@@ -257,6 +409,28 @@ export function ChapteredLessonPage({ lesson, backTo }: ChapteredLessonPageProps
                       )}
                     </div>
                   </div>
+                  {/* Listen button */}
+                  {chapters[currentStep].audio && (
+                    <button
+                      onClick={handleListenClick}
+                      className={cn(
+                        "flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-all",
+                        audioChapterIndex === currentStep && audio.isPlaying
+                          ? "bg-blue-100 text-blue-700 ring-1 ring-blue-300"
+                          : "bg-slate-100 text-slate-600 hover:bg-blue-50 hover:text-blue-600"
+                      )}
+                      aria-label={
+                        audioChapterIndex === currentStep && audio.isPlaying
+                          ? "Pauză audio"
+                          : "Ascultă capitolul"
+                      }
+                    >
+                      <Volume2 className="h-4 w-4" />
+                      <span className="hidden sm:inline">
+                        {audioChapterIndex === currentStep && audio.isPlaying ? "Pauză" : "Ascultă"}
+                      </span>
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -264,6 +438,8 @@ export function ChapteredLessonPage({ lesson, backTo }: ChapteredLessonPageProps
               <ChapterSection
                 chapter={chapters[currentStep]}
                 onMiniQuizComplete={() => markChapterDone(currentStep)}
+                activeBlock={audioChapterIndex === currentStep ? activeBlock : null}
+                activeWordIdx={audioChapterIndex === currentStep ? activeWordIdx : -1}
               />
 
               {/* Prev / Next navigation */}
@@ -291,19 +467,36 @@ export function ChapteredLessonPage({ lesson, backTo }: ChapteredLessonPageProps
             </div>
           )}
         </div>
-      ) : (
+      ) : mode === "lesson" ? (
         // Skeleton placeholder while localStorage loads
         <div className="space-y-4">
           <div className="h-12 animate-pulse rounded-lg bg-slate-100" />
           <div className="h-64 animate-pulse rounded-lg bg-slate-50" />
         </div>
+      ) : null}
+
+      {/* Audio Player Bar */}
+      {isAudioActive && (
+        <AudioPlayerBar
+          isPlaying={audio.isPlaying}
+          currentTime={audio.currentTime}
+          duration={audio.duration}
+          playbackRate={audio.playbackRate}
+          onToggle={audio.toggle}
+          onSeek={audio.seek}
+          onRateChange={handleRateChange}
+          onClose={handleAudioClose}
+        />
       )}
 
       {/* Back to Top */}
       {showBackToTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-opacity hover:bg-blue-700 sm:h-12 sm:w-12"
+          className={cn(
+            "fixed right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-opacity hover:bg-blue-700 sm:h-12 sm:w-12",
+            isAudioActive ? "bottom-20" : "bottom-6"
+          )}
           aria-label="Înapoi sus"
         >
           <ArrowUp className="h-5 w-5" />

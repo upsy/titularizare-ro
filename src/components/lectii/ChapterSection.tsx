@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useCallback, useMemo } from "react";
 import { LessonChapter } from "@/types/lectii";
 import { Badge } from "@/components/ui/Badge";
 import { BookOpen, Lightbulb, Star } from "lucide-react";
@@ -7,24 +8,139 @@ import { cn } from "@/lib/utils";
 import { renderSectionContent, renderFormattedText } from "./formatters";
 import { ExternalResources } from "./ExternalResources";
 import { MiniQuizSection } from "./MiniQuizSection";
+import { WordHighlightOverlay } from "./WordHighlightOverlay";
+
+interface ActiveBlock {
+  sectionIndex: number;
+  blockIndex: number;
+}
 
 interface ChapterSectionProps {
   chapter: LessonChapter;
   onMiniQuizComplete?: () => void;
+  activeBlock?: ActiveBlock | null;
+  activeWordIdx?: number;
 }
 
-export function ChapterSection({ chapter, onMiniQuizComplete }: ChapterSectionProps) {
+export function ChapterSection({ chapter, onMiniQuizComplete, activeBlock, activeWordIdx = -1 }: ChapterSectionProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const isBlockActive = useCallback(
+    (sectionIndex: number, blockIndex: number) => {
+      if (!activeBlock) return false;
+      return activeBlock.sectionIndex === sectionIndex && activeBlock.blockIndex === blockIndex;
+    },
+    [activeBlock]
+  );
+
+  const isSectionTitleActive = useCallback(
+    (sectionIndex: number) => {
+      if (!activeBlock) return false;
+      return activeBlock.sectionIndex === sectionIndex && activeBlock.blockIndex === -1;
+    },
+    [activeBlock]
+  );
+
+  // Check if this chapter has any word-level timestamps
+  const hasWordTimes = useMemo(() => {
+    if (!chapter.audio) return false;
+    return chapter.audio.segments.some((s) => s.wordTimes && s.wordTimes.length > 0);
+  }, [chapter.audio]);
+
+  // Build a map: for each (sectionIndex, blockIndex) → global word offset
+  const wordOffsetMap = useMemo(() => {
+    if (!hasWordTimes || !chapter.audio) return null;
+    const map = new Map<string, number>();
+    let offset = 0;
+    for (const seg of chapter.audio.segments) {
+      if (seg.wordTimes) {
+        map.set(`${seg.sectionIndex}-${seg.blockIndex}`, offset);
+        offset += seg.wordTimes.length;
+      }
+    }
+    return map;
+  }, [hasWordTimes, chapter.audio]);
+
+  const getBlockWordStart = useCallback(
+    (sectionIndex: number, blockIndex: number): number => {
+      if (!wordOffsetMap) return 0;
+      return wordOffsetMap.get(`${sectionIndex}-${blockIndex}`) ?? 0;
+    },
+    [wordOffsetMap]
+  );
+
+  const hasBlockWordTimes = useCallback(
+    (sectionIndex: number, blockIndex: number): boolean => {
+      if (!wordOffsetMap) return false;
+      return wordOffsetMap.has(`${sectionIndex}-${blockIndex}`);
+    },
+    [wordOffsetMap]
+  );
+
+  // Auto-scroll to active word or block.
+  // Debounced to avoid jitter when activeBlock + activeWordIdx change in quick succession
+  // (e.g., section transitions where title → block → word all fire within frames).
+  useEffect(() => {
+    if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+
+    scrollTimerRef.current = setTimeout(() => {
+      if (!containerRef.current) return;
+
+      let target: Element | null = null;
+
+      // Prefer scrolling to active word
+      if (activeWordIdx >= 0) {
+        target = containerRef.current.querySelector(`[data-word-idx="${activeWordIdx}"]`);
+      }
+
+      // Fall back to block-level scroll
+      if (!target && activeBlock) {
+        const selector = activeBlock.blockIndex === -1
+          ? `[data-audio-section-title="${activeBlock.sectionIndex}"]`
+          : `[data-audio-block="${activeBlock.sectionIndex}-${activeBlock.blockIndex}"]`;
+        target = containerRef.current.querySelector(selector);
+      }
+
+      if (!target) return;
+
+      // Only scroll if the element is outside the visible viewport (with margin)
+      const rect = target.getBoundingClientRect();
+      const margin = window.innerHeight * 0.2;
+      const isVisible = rect.top >= margin && rect.bottom <= window.innerHeight - margin;
+      if (!isVisible) {
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }, 250);
+
+    return () => {
+      if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+    };
+  }, [activeBlock, activeWordIdx]);
+
+  const wordHighlightOptions = hasWordTimes ? { getBlockWordStart, hasBlockWordTimes } : undefined;
+
   return (
-    <div>
+    <div ref={containerRef} style={{ position: "relative" }}>
+      {/* Word highlight overlay */}
+      {hasWordTimes && (
+        <WordHighlightOverlay containerRef={containerRef} activeWordIdx={activeWordIdx} />
+      )}
       {/* Theory sections */}
       <div className="mb-6 space-y-5">
         {chapter.sections.map((section, i) => (
           <div key={i}>
-            <div className="mb-2 flex items-center gap-2">
+            <div
+              data-audio-section-title={i}
+              className={cn(
+                "mb-2 flex items-center gap-2 rounded-lg px-3 py-1.5 -mx-3 transition-all duration-500",
+                isSectionTitleActive(i) && "bg-blue-50/80 ring-1 ring-blue-200"
+              )}
+            >
               <BookOpen className="h-4 w-4 text-primary" />
               <h3 className="text-base font-semibold text-foreground">{section.title}</h3>
             </div>
-            {renderSectionContent(section)}
+            {renderSectionContent(section, activeBlock ? { sectionIndex: i, isBlockActive, wordHighlight: wordHighlightOptions } : undefined)}
           </div>
         ))}
       </div>

@@ -46,6 +46,19 @@ export interface MiniQuiz {
   questions: QuizQuestion[];
 }
 
+export interface AudioSegment {
+  startTime: number;
+  endTime: number;
+  sectionIndex: number;
+  blockIndex: number; // -1 = section title
+  wordTimes?: number[]; // startTime per lesson word (for word-level highlighting)
+}
+
+export interface ChapterAudio {
+  src: string;
+  segments: AudioSegment[];
+}
+
 export interface LessonChapter {
   id: string;
   title: string;
@@ -55,6 +68,7 @@ export interface LessonChapter {
   keyPoints: KeyPoint[];
   resources: ExternalResource[];
   miniQuiz: MiniQuiz;
+  audio?: ChapterAudio;
 }
 
 export interface QuizVariant {

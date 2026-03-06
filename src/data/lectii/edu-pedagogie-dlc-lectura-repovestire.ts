@@ -31,6 +31,14 @@ export const eduPedagogieDlcLecturaRepovestireLessons: Lesson[] = [
               "vocabularului și a limbajului, a gândirii, a atenției și a imaginației la preșcolari.",
             contentBlocks: [
               {
+                kind: "text",
+                text:
+                  "**Lectura educatoarei** este o modalitate specifică de realizare a " +
+                  "unor activități didactice **în educația timpurie**, având ca scop " +
+                  "dezvoltarea **vocabularului** și a **limbajului**, a **gândirii**, " +
+                  "a **atenției** și a **imaginației** la preșcolari.",
+              },
+              {
                 kind: "formator-note",
                 formatorNote: {
                   type: "exam-tip",
@@ -42,15 +50,15 @@ export const eduPedagogieDlcLecturaRepovestireLessons: Lesson[] = [
               {
                 kind: "text",
                 text:
-                  "La lectură, educatoarea CITEȘTE povestea dintr-o carte specifică vârstei " +
+                  "La lectură, educatoarea **citește povestea dintr-o carte** specifică vârstei " +
                   "(spre deosebire de povestire, unde spune cu propriile cuvinte). " +
-                  "Aceeași poveste poate fi predată prin lectură SAU prin povestire — " +
+                  "Aceeași poveste poate fi predată prin **lectură** SAU prin **povestire** — " +
                   "sunt modalități diferite de realizare a activității.",
               },
             ],
           },
           {
-            title: "Desfășurarea activității de lectură a educatoarei",
+            title: "Desfășurarea activității — model universal",
             content:
               "Structura eseului pentru lectură urmează aceiași pași ca la povestire, " +
               "cu o diferență importantă: după citire se explică cuvintele necunoscute.",
@@ -58,29 +66,79 @@ export const eduPedagogieDlcLecturaRepovestireLessons: Lesson[] = [
               {
                 kind: "text",
                 text:
-                  "1. Informații organizatorice: domeniul experiențial Limbă și comunicare (DLC) — " +
-                  "Educarea limbajului, tema anuală de studiu (din cerință), sub-tema (titlul poveștii), " +
-                  "nivelul de vârstă.\n\n" +
-                  "2. Introducerea în activitate: educatoarea va introduce preșcolarii în activitate " +
-                  "aducând sub formă de surpriză un personaj din poveste (marionetă-personaj) care " +
-                  "dorește să le spună preșcolarilor povestea sa.\n\n" +
-                  "3. Citirea poveștii: se va citi povestea de către educatoare, având o tonalitate " +
-                  "și intonație potrivită, modelându-și vocea pentru a imita personajele.\n\n" +
-                  "4. Explicarea cuvintelor necunoscute (SPECIFIC lecturii — NU există la povestire): " +
-                  "după citirea poveștii, educatoarea va explica preșcolarilor cuvintele necunoscute " +
-                  "și va formula propoziții cu acestea, pentru a se asigura că toți preșcolarii au înțeles.\n\n" +
-                  "5. Fixarea cunoștințelor: se va aplica metoda modernă Explozia Stelară " +
-                  "(identică cu cea de la povestirea educatoarei).\n\n" +
-                  "6. Încheierea activității: aprecieri verbale, stimulente/recompense.",
+                  "Pașii eseului, în ordine:\n\n" +
+                  "1. **Informații organizatorice:** domeniul experiențial **DLC** — " +
+                  "Educarea limbajului, tema anuală de studiu (din cerință), subtema " +
+                  "= titlul poveștii, nivelul de vârstă (din cerință)\n" +
+                  "2. **Introducerea în activitate:** educatoarea aduce sub formă de " +
+                  "surpriză un **personaj din poveste** (marionetă-personaj) care " +
+                  "dorește să le spună preșcolarilor povestea sa\n" +
+                  "3. **Citirea poveștii:** se va citi povestea de către educatoare, " +
+                  "având o **tonalitate și intonație potrivită**, modelându-și vocea " +
+                  "pentru a imita personajele\n" +
+                  "4. **Explicarea cuvintelor necunoscute** (**SPECIFIC lecturii** — NU " +
+                  "există la povestire): educatoarea va explica preșcolarilor cuvintele " +
+                  "necunoscute și va **formula propoziții** cu acestea\n" +
+                  "5. **Fixarea cunoștințelor** — metoda modernă **Explozia Stelară** " +
+                  "(identică cu cea de la povestirea educatoarei)\n" +
+                  "6. **Încheierea activității** — aprecieri verbale și stimulente",
+              },
+              {
+                kind: "formator-note",
+                formatorNote: {
+                  type: "exam-tip",
+                  content:
+                    "Eseul este aproape identic cu cel de la povestire — se schimbă doar " +
+                    "pasul 3 (citire în loc de expunere) și se adaugă pasul 4 (explicare " +
+                    "cuvinte necunoscute). Învățați un singur model și îl adaptați.",
+                },
               },
               {
                 kind: "formator-note",
                 formatorNote: {
                   type: "practical",
                   content:
-                    "Alegeți cărți cu cuvinte uzuale, potrivite vârstei. Nu alegeți texte prea " +
-                    "dificile — explicarea cuvintelor necunoscute trebuie să fie scurtă și clară " +
+                    "Alegeți cărți cu cuvinte uzuale, potrivite vârstei. Explicarea cuvintelor " +
+                    "necunoscute trebuie să fie scurtă și clară " +
                     "(ex: «gigant» = «mare», pus în context cu propoziții).",
+                },
+              },
+              {
+                kind: "expandable",
+                expandable: {
+                  label:
+                    "Model complet de eseu — Grupa mare (5-6 ani), Crăiasa Zăpezii",
+                  source: "claude",
+                  content:
+                    "**Lectura educatoarei** este o modalitate specifică de realizare " +
+                    "a unor activități didactice **în educația timpurie**, având ca scop " +
+                    "dezvoltarea **vocabularului** și a **limbajului**, a **gândirii**, " +
+                    "a **atenției** și a **imaginației** la preșcolari.\n\n" +
+                    "Pentru a desfășura activitatea de lectură a educatoarei, la " +
+                    "domeniul experiențial **Limbă și comunicare** — Educarea limbajului, " +
+                    "având ca temă anuală de studiu **«Când, cum și de ce se întâmplă?»**, " +
+                    "subtema **«Crăiasa Zăpezii»** de Hans Christian Andersen, pentru " +
+                    "grupa de **5-6 ani**, educatoarea va introduce preșcolarii în " +
+                    "activitate aducând sub formă de surpriză un **personaj din poveste** " +
+                    "care dorește să le spună preșcolarilor povestea sa.\n\n" +
+                    "Se va **citi povestea** de către educatoare, având o **tonalitate** " +
+                    "și **intonație potrivită**, modelându-și vocea pentru a imita " +
+                    "personajele.\n\n" +
+                    "După citirea poveștii, educatoarea va explica preșcolarilor " +
+                    "**cuvintele necunoscute** și va **formula propoziții** cu acestea, " +
+                    "pentru a se asigura că toți preșcolarii au înțeles.\n\n" +
+                    "Se va aplica metoda modernă **Explozia Stelară** pentru fixarea " +
+                    "cunoștințelor, unde preșcolarii grupei mari vor fi împărțiți " +
+                    "în **5 echipe**. Din fiecare echipă se va alege un reprezentant " +
+                    "care va extrage una din cele cinci întrebări: **«Cine?», «Unde?», " +
+                    "«De ce?», «Când?» și «Ce?»**. Pe baza acestora, preșcolarii vor " +
+                    "avea de reformulat întrebarea extrasă în conformitate cu povestea.\n\n" +
+                    "La expirarea timpului, preșcolarii își vor adresa întrebări între " +
+                    "ei și vor plasa răspunsurile, ilustrate în **imagini**, pe steluța " +
+                    "corespunzătoare întrebării, din jurul steluței mari unde se află " +
+                    "**tema centrală**. Steluțele sunt plasate frontal pe **tabla magnetică**.\n\n" +
+                    "Educatoarea face **aprecieri verbale** asupra modului de implicare " +
+                    "la activitate și oferă **stimulente**.",
                 },
               },
             ],
@@ -90,33 +148,50 @@ export const eduPedagogieDlcLecturaRepovestireLessons: Lesson[] = [
             content:
               "La povestirea educatoarei, educatoarea spune povestea cu propriile cuvinte " +
               "și folosește marionete — povestea este filtrată prin educatoare, deci NU se " +
-              "explică cuvinte necunoscute (educatoarea a adaptat deja vocabularul). " +
-              "La lectura educatoarei, educatoarea citește din carte, deci pot apărea " +
-              "cuvinte necunoscute care trebuie explicate după citire. Restul structurii " +
-              "este identic.",
+              "explică cuvinte necunoscute. La lectura educatoarei, educatoarea citește " +
+              "din carte, deci se explică cuvinte necunoscute după citire.",
+            contentBlocks: [
+              {
+                kind: "text",
+                text:
+                  "| Aspect | Povestirea educatoarei | Lectura educatoarei |\n" +
+                  "|--------|----------------------|---------------------|\n" +
+                  "| Mod de expunere | Cu propriile cuvinte + marionete | Citește din carte |\n" +
+                  "| Cuvinte necunoscute | NU se explică (povestea e filtrată) | DA — se explică după citire |\n" +
+                  "| Restul structurii | Identic | Identic |",
+              },
+              {
+                kind: "formator-note",
+                formatorNote: {
+                  type: "practical",
+                  content:
+                    "La povestire, educatoarea a **filtrat** povestea prin propriile " +
+                    "cuvinte, adaptând vocabularul la nivelul copiilor — de ce i-ar zice " +
+                    "un cuvânt necunoscut? La lectură, citește din carte, deci pot apărea " +
+                    "cuvinte pe care copiii nu le cunosc.",
+                },
+              },
+            ],
           },
         ],
         examples: [
           {
-            title: "Model de eseu — Lectura educatoarei (grupa mare)",
+            title: "Model de captare a atenției",
             description:
-              "Cerință: Prezentați o activitate de lectură a educatoarei, grupa 5-6 ani, " +
-              "DLC, tema «Când, cum și de ce se întâmplă?», poveste: Crăiasa Zăpezii.\n\n" +
-              "Lectura educatoarei este o modalitate specifică de realizare a unor activități " +
-              "didactice în educația timpurie, având ca scop dezvoltarea vocabularului și a " +
-              "limbajului, a gândirii, a atenției și a imaginației la preșcolari.\n\n" +
-              "Pentru a desfășura activitatea de lectură a educatoarei, nivel de vârstă 5-6 ani, " +
-              "la domeniul experiențial Limbă și comunicare — Educarea limbajului, având ca temă " +
-              "anuală de studiu «Când, cum și de ce se întâmplă?», sub-tema Crăiasa Zăpezii de " +
-              "Hans Christian Andersen:\n\n" +
-              "Educatoarea va introduce preșcolarii în activitate aducând sub formă de surpriză " +
-              "un personaj din poveste care dorește să le spună preșcolarilor povestea sa.\n\n" +
-              "Se va citi povestea de către educatoare, având o tonalitate și intonație potrivită, " +
-              "modelându-și vocea pentru a imita personajele.\n\n" +
-              "După citirea poveștii, educatoarea va explica preșcolarilor cuvintele necunoscute " +
-              "și va formula propoziții cu acestea, pentru a se asigura că toți preșcolarii au înțeles.\n\n" +
-              "Se va aplica metoda modernă Explozia Stelară pentru fixarea cunoștințelor " +
-              "(vezi povestirea educatoarei).",
+              "Educatoarea aduce sub formă de surpriză un **personaj din poveste** " +
+              "(marionetă-personaj) care dorește să le spună preșcolarilor povestea sa.",
+          },
+          {
+            title: "Model de citire",
+            description:
+              "Se va **citi povestea** de către educatoare, având o **tonalitate și " +
+              "intonație potrivită**, modelându-și vocea pentru a imita personajele.",
+          },
+          {
+            title: "Model de explicare a cuvintelor",
+            description:
+              "Educatoarea va explica preșcolarilor **cuvintele necunoscute** și va " +
+              "**formula propoziții** cu acestea (ex: «gigant» = «mare»).",
           },
         ],
         keyPoints: [
@@ -132,7 +207,7 @@ export const eduPedagogieDlcLecturaRepovestireLessons: Lesson[] = [
             text: "Restul structurii este identic cu povestirea educatoarei",
           },
           {
-            text: "Se termină cu metoda Explozia Stelară (identică la toate 3 modalitățile)",
+            text: "Se termină cu metoda Explozia Stelară (identică la toate cele 3 modalități)",
           },
         ],
         resources: [],
@@ -298,52 +373,122 @@ export const eduPedagogieDlcLecturaRepovestireLessons: Lesson[] = [
               "dezvoltarea exprimării cursive și a imaginației la preșcolari.",
             contentBlocks: [
               {
+                kind: "text",
+                text:
+                  "**Repovestirea** este o modalitate specifică de realizare a " +
+                  "unor activități didactice **în educația timpurie**, care are ca " +
+                  "scop **dezvoltarea și exersarea vorbirii** sub toate aspectele " +
+                  "sale, dezvoltarea **exprimării cursive** și a **imaginației** " +
+                  "la preșcolari.",
+              },
+              {
                 kind: "formator-note",
                 formatorNote: {
                   type: "exam-tip",
                   content:
-                    "Repovestirea este făcută de COPII, nu de educatoare! " +
+                    "Repovestirea este făcută de **COPII**, nu de educatoare! " +
                     "Copiii repovestesc ce a spus educatoarea (fie prin lectură, fie prin povestire). " +
-                    "Tipul folosit la examen: repovestirea pe bază de imagini.",
+                    "Tipul folosit la examen: **repovestirea pe bază de imagini**.",
                 },
               },
               {
                 kind: "text",
                 text:
-                  "Există 4 tipuri de repovestire în teorie, dar la examen se cere " +
-                  "doar repovestirea pe bază de imagini. Nu detaliați celelalte tipuri " +
+                  "Există **4 tipuri** de repovestire în teorie, dar la examen se cere " +
+                  "doar **repovestirea pe bază de imagini**. Nu detaliați celelalte tipuri " +
                   "în eseu — mergeți direct pe structura cerută.",
               },
             ],
           },
           {
-            title: "Desfășurarea activității de repovestire",
+            title: "Desfășurarea activității — model universal",
             content:
               "Structura eseului pentru repovestire pe bază de imagini:",
             contentBlocks: [
               {
                 kind: "text",
                 text:
-                  "1. Informații organizatorice: domeniul experiențial Limbă și comunicare (DLC) — " +
-                  "Educarea limbajului, tema anuală de studiu (din cerință), textul suport / sub-tema " +
-                  "(titlul poveștii), nivelul de vârstă.\n\n" +
-                  "2. Introducerea în activitate: educatoarea va introduce preșcolarii în activitate " +
-                  "aducând sub formă de surpriză un personaj din poveste care dorește să vadă dacă " +
-                  "preșcolarii își amintesc de povestea lui.\n\n" +
-                  "3. Anunțarea titlului: se va anunța titlul și autorul poveștii și se va reaminti " +
-                  "pe scurt conținutul poveștii.\n\n" +
-                  "4. Repovestirea pe bază de imagini: pe tabla magnetică se vor afișa imagini din " +
-                  "poveste (celelalte imagini sunt întoarse, se afișează câte o imagine pe rând). " +
-                  "Preșcolarii vor povesti episodul prezentat în imagine. Fiecare episod " +
-                  "(corespunzător unei imagini) va fi povestit de către alt preșcolar. Dacă este " +
-                  "cazul, vor fi solicitați și alți preșcolari să completeze expunerea.\n\n" +
-                  "5. Se va insista pe folosirea formulelor de încipit și final (ex: «A fost odată...») " +
-                  "și pe utilizarea unei exprimări corecte și coerente.\n\n" +
-                  "6. Repovestirea integrală: pentru a se realiza repovestirea integrală, vor fi " +
-                  "solicitați 2-3 preșcolari care vor repovesti folosindu-se cât mai puțin de imagini " +
-                  "(la grupa mare) / cât mai mult de imagini (la grupa mică și mijlocie).\n\n" +
-                  "7. Fixarea cunoștințelor: se va aplica metoda modernă Explozia Stelară " +
-                  "(identică cu povestirea și lectura educatoarei).",
+                  "Pașii eseului, în ordine:\n\n" +
+                  "1. **Informații organizatorice:** domeniul experiențial **DLC** — " +
+                  "Educarea limbajului, tema anuală de studiu (din cerință), **textul suport** " +
+                  "= titlul poveștii, nivelul de vârstă (din cerință)\n" +
+                  "2. **Introducerea în activitate:** educatoarea aduce sub formă de " +
+                  "surpriză un **personaj din poveste** care dorește să vadă dacă " +
+                  "preșcolarii **își amintesc** de povestea lui\n" +
+                  "3. **Anunțarea titlului și autorului:** se va reaminti pe scurt " +
+                  "conținutul poveștii\n" +
+                  "4. **Repovestirea pe bază de imagini:** pe **tabla magnetică** se vor " +
+                  "afișa imagini din poveste (celelalte sunt întoarse, se afișează " +
+                  "câte o imagine pe rând). Fiecare episod va fi povestit de **alt " +
+                  "preșcolar**. Dacă este cazul, alți preșcolari completează expunerea\n" +
+                  "5. **Formule de incipit și final:** se va insista pe «A fost " +
+                  "odată...» și pe **exprimare corectă și coerentă**\n" +
+                  "6. **Repovestirea integrală:** **2-3 preșcolari** repovestesc " +
+                  "folosindu-se **cât mai puțin** de imagini (grupa mare) / **cât mai " +
+                  "mult** (grupa mică/mijlocie)\n" +
+                  "7. **Fixarea cunoștințelor** — metoda modernă **Explozia Stelară** " +
+                  "(identică cu povestirea și lectura educatoarei)",
+              },
+              {
+                kind: "formator-note",
+                formatorNote: {
+                  type: "exam-tip",
+                  content:
+                    "Toate cele 3 modalități (povestire, lectură, repovestire) au " +
+                    "**același final** — Explozia Stelară. Învățați-l o singură dată " +
+                    "și aplicați-l la toate.",
+                },
+              },
+              {
+                kind: "expandable",
+                expandable: {
+                  label:
+                    "Model complet de eseu — Grupa mare (5-6 ani), Crăiasa Zăpezii",
+                  source: "claude",
+                  content:
+                    "**Repovestirea** este o modalitate specifică de realizare a " +
+                    "unor activități didactice **în educația timpurie**, care are ca " +
+                    "scop **dezvoltarea și exersarea vorbirii** sub toate aspectele " +
+                    "sale, dezvoltarea **exprimării cursive** și a **imaginației** " +
+                    "la preșcolari.\n\n" +
+                    "Pentru a desfășura activitatea de repovestire, la domeniul " +
+                    "experiențial **Limbă și comunicare** — Educarea limbajului, " +
+                    "având ca temă anuală de studiu **«Când, cum și de ce se " +
+                    "întâmplă?»**, textul suport **«Crăiasa Zăpezii»** de Hans " +
+                    "Christian Andersen, pentru grupa de **5-6 ani**, educatoarea " +
+                    "va introduce preșcolarii în activitate aducând sub formă de " +
+                    "surpriză un **personaj din poveste** care dorește să vadă dacă " +
+                    "preșcolarii își amintesc de povestea lui.\n\n" +
+                    "Se va anunța **titlul și autorul poveștii** și se va reaminti " +
+                    "pe scurt conținutul poveștii.\n\n" +
+                    "Pe **tabla magnetică** se vor afișa imagini din poveste. " +
+                    "Preșcolarii vor povesti episodul prezentat în imagine. Fiecare " +
+                    "episod (corespunzător unei imagini) va fi povestit de către " +
+                    "**alt preșcolar**. Dacă este cazul, vor fi solicitați și alți " +
+                    "preșcolari să completeze expunerea.\n\n" +
+                    "Se va insista pe folosirea **formulelor de incipit și final** " +
+                    "și pe utilizarea unei **exprimări corecte și coerente**.\n\n" +
+                    "Pentru a se realiza **repovestirea integrală**, vor fi " +
+                    "solicitați **2-3 preșcolari** care vor repovesti folosindu-se " +
+                    "**cât mai puțin** de imagini.\n\n" +
+                    "Se va aplica metoda modernă **Explozia Stelară** pentru fixarea " +
+                    "cunoștințelor, unde preșcolarii grupei mari vor fi împărțiți " +
+                    "în **5 echipe**. Din fiecare echipă se va alege un reprezentant " +
+                    "care va extrage una din cele cinci întrebări: **«Cine?», " +
+                    "«Unde?», «De ce?», «Când?» și «Ce?»**. Pe baza acestora, " +
+                    "preșcolarii vor avea de reformulat întrebarea extrasă în " +
+                    "conformitate cu povestea: «Cine sunt personajele din poveste?», " +
+                    "«Unde se petrece acțiunea din poveste?», «Ce s-a întâmplat cu " +
+                    "Kai?», «Când se petrece acțiunea?», «De ce s-a topit gheața " +
+                    "din inima lui Kai?».\n\n" +
+                    "La expirarea timpului, preșcolarii își vor adresa întrebări " +
+                    "între ei și vor plasa răspunsurile, ilustrate în **imagini**, " +
+                    "pe steluța corespunzătoare întrebării, din jurul steluței mari " +
+                    "unde se află **tema centrală**. Steluțele sunt plasate frontal " +
+                    "pe **tabla magnetică**.\n\n" +
+                    "Educatoarea face **aprecieri verbale** asupra modului de " +
+                    "implicare la activitate și oferă **stimulente**.",
+                },
               },
             ],
           },
@@ -355,13 +500,30 @@ export const eduPedagogieDlcLecturaRepovestireLessons: Lesson[] = [
               "Grupa mare (5-6 ani): până la 5 imagini — copiii se folosesc cât mai puțin de ele.",
             contentBlocks: [
               {
+                kind: "text",
+                text:
+                  "| Grupă | Nr. imagini | Dependența de imagini la repovestire |\n" +
+                  "|-------|-------------|--------------------------------------|\n" +
+                  "| Mică (3-4 ani) | 1-2 mari | Se bazează MULT pe imagini (se uită și zic ce văd) |\n" +
+                  "| Mijlocie (4-5 ani) | 3-4 | Dependență moderată |\n" +
+                  "| Mare (5-6 ani) | Până la 5 | Se bazează cât mai PUȚIN pe imagini |",
+              },
+              {
+                kind: "text",
+                text:
+                  "**Atenție la distincție:** grupa mică are mai **puține** imagini (1-2, dar mari), " +
+                  "însă copiii se **bazează mult** pe ele — se uită și zic ce văd. Grupa mare " +
+                  "are mai **multe** imagini (până la 5), dar copiii trebuie să repovestească " +
+                  "**cât mai puțin ajutați** de ele — cunosc deja povestea.",
+              },
+              {
                 kind: "formator-note",
                 formatorNote: {
                   type: "practical",
                   content:
-                    "Nu scrieți în eseu câte imagini folosiți. Doar precizați «cât mai puțin de imagini» " +
-                    "(grupa mare) sau «cât mai mult de imagini» (grupa mică/mijlocie). " +
-                    "Numărul exact de imagini depinde de poveste.",
+                    "**Nu** scrieți în eseu câte imagini folosiți. " +
+                    "Scrieți doar: «folosindu-se **cât mai puțin** de imagini» (grupa mare) " +
+                    "sau «folosindu-se **cât mai mult** de imagini» (grupa mică/mijlocie).",
                 },
               },
             ],
@@ -369,31 +531,24 @@ export const eduPedagogieDlcLecturaRepovestireLessons: Lesson[] = [
         ],
         examples: [
           {
-            title: "Model de eseu — Repovestirea (grupa mare)",
+            title: "Model de introducere — Repovestire",
             description:
-              "Cerință: Prezentați o activitate de repovestire, grupa 5-6 ani, " +
-              "DLC, tema «Când, cum și de ce se întâmplă?», textul suport: Crăiasa Zăpezii.\n\n" +
-              "Repovestirea este o modalitate specifică de realizare a unor activități " +
-              "didactice în educația timpurie, care are ca scop dezvoltarea și exersarea " +
-              "vorbirii sub toate aspectele sale, dezvoltarea exprimării cursive și a " +
-              "imaginației la preșcolari.\n\n" +
-              "Pentru a desfășura activitatea de repovestire, nivel de vârstă 5-6 ani, " +
-              "la domeniul experiențial Limbă și comunicare — Educarea limbajului, având ca temă " +
-              "anuală de studiu «Când, cum și de ce se întâmplă?», textul suport Crăiasa Zăpezii " +
-              "de Hans Christian Andersen:\n\n" +
-              "Educatoarea va introduce preșcolarii în activitate aducând sub formă de surpriză " +
-              "un personaj din poveste care dorește să vadă dacă preșcolarii își amintesc de " +
-              "povestea lui.\n\n" +
-              "Se va anunța titlul și autorul poveștii și se va reaminti pe scurt conținutul poveștii.\n\n" +
-              "Pe tabla magnetică se vor afișa imagini din poveste. Preșcolarii vor povesti episodul " +
-              "prezentat în imagine. Fiecare episod va fi povestit de către alt preșcolar. Dacă " +
-              "este cazul, vor fi solicitați și alți preșcolari să completeze expunerea.\n\n" +
-              "Se va insista pe folosirea formulelor de încipit și final și pe utilizarea unei " +
-              "exprimări corecte și coerente.\n\n" +
-              "Pentru a se realiza repovestirea integrală, vor fi solicitați 2-3 preșcolari care " +
-              "vor repovesti folosindu-se cât mai puțin de imagini.\n\n" +
-              "Se va aplica metoda modernă Explozia Stelară pentru fixarea cunoștințelor " +
-              "(vezi povestirea educatoarei / lectura educatoarei).",
+              "Educatoarea aduce sub formă de surpriză un **personaj din poveste** " +
+              "care dorește să vadă dacă preșcolarii **își amintesc** de povestea lui " +
+              "(nu le mai zice povestea — vrea să vadă cu ce au rămas).",
+          },
+          {
+            title: "Model de repovestire pe bază de imagini",
+            description:
+              "Pe **tabla magnetică** se afișează imagini din poveste, câte una pe " +
+              "rând. Fiecare episod va fi povestit de **alt preșcolar**. Se insistă " +
+              "pe **formule de incipit și final** și pe exprimare corectă.",
+          },
+          {
+            title: "Model de repovestire integrală",
+            description:
+              "**2-3 preșcolari** repovestesc întreaga poveste, folosindu-se " +
+              "**cât mai puțin** de imagini (la grupa mare).",
           },
         ],
         keyPoints: [
@@ -410,13 +565,13 @@ export const eduPedagogieDlcLecturaRepovestireLessons: Lesson[] = [
             important: true,
           },
           {
-            text: "Se va insista pe formule de încipit/final și exprimare corectă",
+            text: "Se va insista pe formule de incipit/final și pe exprimare corectă",
           },
           {
             text: "2-3 preșcolari repovestesc integral la final",
           },
           {
-            text: "Se termină cu metoda Explozia Stelară (identică la toate 3 modalitățile)",
+            text: "Se termină cu metoda Explozia Stelară (identică la toate cele 3 modalități)",
           },
         ],
         resources: [],
@@ -537,15 +692,15 @@ export const eduPedagogieDlcLecturaRepovestireLessons: Lesson[] = [
               question:
                 "Se va insista pe folosirea formulelor de _______ și final.",
               correctAnswers: [
-                "încipit",
                 "incipit",
-                "Încipit",
+                "încipit",
                 "Incipit",
-                "ÎNCIPIT",
+                "Încipit",
                 "INCIPIT",
+                "ÎNCIPIT",
               ],
               explanation:
-                "Se va insista pe folosirea formulelor de încipit (ex: «A fost odată...») " +
+                "Se va insista pe folosirea formulelor de incipit (ex: «A fost odată...») " +
                 "și final, precum și pe utilizarea unei exprimări corecte și coerente.",
             },
             {
@@ -575,7 +730,7 @@ export const eduPedagogieDlcLecturaRepovestireLessons: Lesson[] = [
       "în educația timpurie, având ca scop dezvoltarea vocabularului și a limbajului, a gândirii, " +
       "a atenției și a imaginației la preșcolari.\n\n" +
       "### Desfășurare\n" +
-      "- Informații organizatorice (DLC, tema anuală, sub-tema, vârsta)\n" +
+      "- Informații organizatorice (DLC, tema anuală, subtema, vârsta)\n" +
       "- Introducere: surpriză cu personaj/marionetă\n" +
       "- Citirea poveștii cu tonalitate potrivită\n" +
       "- Explicarea cuvintelor necunoscute + propoziții\n" +
@@ -594,7 +749,7 @@ export const eduPedagogieDlcLecturaRepovestireLessons: Lesson[] = [
       "- Introducere: personaj care vrea să vadă dacă își amintesc povestea\n" +
       "- Anunțare titlu + reamintire pe scurt conținut\n" +
       "- Repovestire pe bază de imagini (alt copil per episod)\n" +
-      "- Formule de încipit/final, exprimare corectă\n" +
+      "- Formule de incipit/final, exprimare corectă\n" +
       "- Repovestire integrală (2-3 preșcolari)\n" +
       "- Explozia Stelară\n\n" +
       "### Imagini pe grupe\n" +

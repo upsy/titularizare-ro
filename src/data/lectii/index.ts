@@ -17,8 +17,11 @@ import { eduRomanaNeomodernismLessons } from "./edu-romana-neomodernism";
 import { eduRomanaComediaLessons } from "./edu-romana-comedia";
 import { eduPedagogieDlcPovestireLessons } from "./edu-pedagogie-dlc-povestire";
 import { eduPedagogieDlcLecturaRepovestireLessons } from "./edu-pedagogie-dlc-lectura-repovestire";
+import { eduPedagogieDlcLecturaDupaImaginiLessons } from "./edu-pedagogie-dlc-lectura-dupa-imagini";
+import { eduPedagogieDlcConvorbireLessons } from "./edu-pedagogie-dlc-convorbire";
+import { eduPedagogieStiinteObservareLessons } from "./edu-pedagogie-stiinte-observare";
 
-const allLessons: Lesson[] = [
+export const allLessons: Lesson[] = [
   ...eduLimbaComunicareLessons,
   ...eduMatematicaLessons,
   ...eduPedagogieLessons,
@@ -37,6 +40,9 @@ const allLessons: Lesson[] = [
   ...eduRomanaComediaLessons,
   ...eduPedagogieDlcPovestireLessons,
   ...eduPedagogieDlcLecturaRepovestireLessons,
+  ...eduPedagogieDlcLecturaDupaImaginiLessons,
+  ...eduPedagogieDlcConvorbireLessons,
+  ...eduPedagogieStiinteObservareLessons,
 ];
 
 export function getLessonByTopicId(topicId: string): Lesson | undefined {

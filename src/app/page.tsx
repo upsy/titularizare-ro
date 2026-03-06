@@ -24,6 +24,7 @@ import { courseSessions } from "@/data/cursuri";
 import { hasLesson } from "@/data/lectii";
 import { formatDate, getDaysUntil } from "@/lib/utils";
 import { EXAM_DATE } from "@/lib/constants";
+import { DueReviewWidget } from "@/components/review/DueReviewWidget";
 
 export default function HomePage() {
   const { totalCompleted, streak, getSubjectProgress } = useProgress();
@@ -112,6 +113,11 @@ export default function HomePage() {
             </div>
           </CardContent>
         </Card>
+      </section>
+
+      {/* Due Review Widget */}
+      <section className="mb-10">
+        <DueReviewWidget />
       </section>
 
       {/* Progress Overview */}

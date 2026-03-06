@@ -124,4 +124,49 @@ export const courseSessions: CourseSession[] = [
     category: "Metodica",
     examSubject: "Subiectul III",
   },
+  {
+    id: "curs-2026-02-27",
+    date: "2026-02-27",
+    displayDate: "27 Februarie 2026",
+    title: "Lectura după imagini — model de eseu (Subiectul III, Ex. 1)",
+    description:
+      "Definiția lecturii după imagini, cele 3 planuri de intuire (central, secundar, îndepărtat), " +
+      "mecanismul sintezelor parțiale și sinteză finală (poveste), model complet de eseu pe tema " +
+      "«Tablou de iarnă», adaptare la Științe și DLC.",
+    topicIds: ["edu-ped-dlc-lectura-dupa-imagini"],
+    status: "complete",
+    category: "Metodica",
+    examSubject: "Subiectul III",
+  },
+  {
+    id: "curs-2026-03-03",
+    date: "2026-03-03",
+    displayDate: "3 Martie 2026",
+    title: "Convorbirea — model de eseu (Subiectul III, Ex. 1)",
+    description:
+      "Definiția și scopul convorbirii (succesiune de întrebări și răspunsuri), " +
+      "principiul de la general la particular, diferențierea pe grupe (mică/mijlocie: 2 seturi, " +
+      "mare: 3 seturi de întrebări), adaptare la Științe, DLC și DOS, " +
+      "convorbirea fără suport intuitiv la grădiniță.",
+    topicIds: ["edu-ped-dlc-convorbire"],
+    status: "complete",
+    category: "Metodica",
+    examSubject: "Subiectul III",
+  },
+  {
+    id: "curs-2026-03-05",
+    date: "2026-03-05",
+    displayDate: "5 Martie 2026",
+    title: "Observarea — model de eseu (Subiectul III, Ex. 1)",
+    description:
+      "Definiția observării (analiză + identificare caracteristici), " +
+      "exclusiv Științe — Cunoașterea Mediului, diferențiere pe grupe " +
+      "(mică: 1 obiect, mijlocie: 1-2, mare: 2+ prin comparație), " +
+      "regula originalului, Diagrama Venn vs. Explozia Stelară, " +
+      "model complet de eseu pe tema «Vișina și căpșuna».",
+    topicIds: ["edu-ped-stiinte-observare"],
+    status: "complete",
+    category: "Metodica",
+    examSubject: "Subiectul III",
+  },
 ];

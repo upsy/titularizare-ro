@@ -7,6 +7,8 @@ export const NAV_LINKS = [
   { href: "/", label: "Acasă" },
   { href: "/cursuri", label: "Cursuri" },
   { href: "/programa", label: "Programa" },
+  { href: "/flashcards", label: "Flashcards" },
+  { href: "/review", label: "Revizuire" },
   { href: "/inscriere", label: "Înscriere" },
   { href: "/resurse", label: "Resurse" },
   { href: "/progres", label: "Progres" },

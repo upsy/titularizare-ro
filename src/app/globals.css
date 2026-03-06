@@ -61,3 +61,42 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-muted);
 }
+
+/* Word-level audio highlight */
+[data-word-idx] {
+  transition: background-color 200ms ease;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+.word-near {
+  background-color: rgba(191, 219, 254, 0.25);
+}
+
+/* Flashcard flip animation */
+.flashcard-container {
+  perspective: 1000px;
+}
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+}
+.flashcard-inner.flipped {
+  transform: rotateY(180deg);
+}
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+.flashcard-back {
+  transform: rotateY(180deg);
+}

@@ -6,6 +6,7 @@ import { QuizQuestion, checkAnswer } from "./QuizQuestion";
 import { QuizResults } from "./QuizResults";
 import { Button } from "@/components/ui/Button";
 import { useQuizProgress } from "@/hooks/useQuizProgress";
+import { useSpacedRepetition } from "@/hooks/useSpacedRepetition";
 import { ClipboardCheck } from "lucide-react";
 
 interface QuizSectionProps {
@@ -19,6 +20,7 @@ export function QuizSection({ quiz, variantId, backTo }: QuizSectionProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [score, setScore] = useState(0);
   const { saveAttempt } = useQuizProgress();
+  const { seedFromQuiz } = useSpacedRepetition();
 
   const handleAnswer = useCallback(
     (questionId: string, value: string | number | boolean) => {
@@ -45,7 +47,14 @@ export function QuizSection({ quiz, variantId, backTo }: QuizSectionProps) {
       ...(variantId ? { variantId } : {}),
     };
     saveAttempt(attempt);
-  }, [quiz, answers, saveAttempt, variantId]);
+
+    // Seed spaced repetition
+    const srResults = quiz.questions.map((q) => ({
+      questionId: q.id,
+      correct: checkAnswer(q, answers[q.id]),
+    }));
+    seedFromQuiz(quiz.topicId, srResults);
+  }, [quiz, answers, saveAttempt, seedFromQuiz, variantId]);
 
   const handleRetry = useCallback(() => {
     setAnswers({});

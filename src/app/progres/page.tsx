@@ -9,12 +9,14 @@ import {
   Target,
   TrendingUp,
   ClipboardCheck,
+  RotateCcw,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { useProgress } from "@/hooks/useProgress";
 import { useQuizProgress } from "@/hooks/useQuizProgress";
+import { useSpacedRepetition } from "@/hooks/useSpacedRepetition";
 import { programaEducatoare } from "@/data/programa-educatoare";
 import { getDaysUntil, getPercentage } from "@/lib/utils";
 import { EXAM_DATE } from "@/lib/constants";
@@ -23,6 +25,7 @@ export default function ProgresPage() {
   const { totalCompleted, streak, getSubjectProgress, progress } = useProgress();
   const { totalQuizStats } = useQuizProgress();
   const quizStats = totalQuizStats();
+  const { totalTracked, totalReviews, boxDistribution, dueQuestions } = useSpacedRepetition();
 
   const allSubjects = [...programaEducatoare];
   const totalTopics = allSubjects.reduce(
@@ -172,6 +175,77 @@ export default function ProgresPage() {
               </CardContent>
             </Card>
           </div>
+        </section>
+      )}
+
+      {/* Spaced Repetition Stats */}
+      {totalTracked > 0 && (
+        <section className="mt-8">
+          <h2 className="mb-4 flex items-center gap-2 text-xl font-semibold">
+            <RotateCcw className="h-5 w-5 text-violet-600" />
+            Revizuire Spațiată
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-3 mb-4">
+            <Card>
+              <CardContent className="flex items-center gap-4">
+                <div className="rounded-lg bg-violet-100 p-3">
+                  <RotateCcw className="h-5 w-5 text-violet-600" />
+                </div>
+                <div>
+                  <p className="text-2xl font-bold">{totalTracked}</p>
+                  <p className="text-sm text-muted">întrebări în sistem</p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="flex items-center gap-4">
+                <div className="rounded-lg bg-blue-100 p-3">
+                  <TrendingUp className="h-5 w-5 text-blue-600" />
+                </div>
+                <div>
+                  <p className="text-2xl font-bold">{totalReviews}</p>
+                  <p className="text-sm text-muted">revizuiri totale</p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="flex items-center gap-4">
+                <div className="rounded-lg bg-amber-100 p-3">
+                  <Clock className="h-5 w-5 text-amber-600" />
+                </div>
+                <div>
+                  <p className="text-2xl font-bold">{dueQuestions.length}</p>
+                  <p className="text-sm text-muted">de revizuit azi</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Box distribution */}
+          <Card>
+            <CardContent>
+              <h3 className="mb-3 font-medium text-foreground">Distribuție pe nivele</h3>
+              <div className="flex items-end gap-2 h-20">
+                {([1, 2, 3, 4, 5] as const).map((box) => {
+                  const count = boxDistribution[box] || 0;
+                  const maxCount = Math.max(...Object.values(boxDistribution), 1);
+                  const height = count > 0 ? Math.max((count / maxCount) * 100, 10) : 0;
+                  const colors = ["", "bg-red-400", "bg-orange-400", "bg-amber-400", "bg-blue-400", "bg-emerald-400"];
+                  const labels = ["", "1 zi", "3 zile", "7 zile", "14 zile", "30 zile"];
+                  return (
+                    <div key={box} className="flex flex-1 flex-col items-center gap-1">
+                      <span className="text-xs font-medium text-foreground">{count}</span>
+                      <div
+                        className={`w-full rounded-t ${colors[box]}`}
+                        style={{ height: `${height}%` }}
+                      />
+                      <span className="text-[10px] text-muted">{labels[box]}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
         </section>
       )}
 
