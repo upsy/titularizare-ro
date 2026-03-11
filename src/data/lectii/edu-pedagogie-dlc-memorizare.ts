@@ -44,8 +44,8 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
                 formatorNote: {
                   type: "exam-tip",
                   content:
-                    "Definiția trebuie să conțină: (1) <<modalitate specifică>>, " +
-                    "(2) <<în educația timpurie>>, (3) scopul — formarea " +
+                    "Definiția trebuie să conțină: (1) «modalitate specifică», " +
+                    "(2) «în educația timpurie», (3) scopul — formarea " +
                     "cunoștințelor și deprinderilor. Pentru definiție primești 5 puncte!",
                 },
               },
@@ -99,7 +99,7 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
                   "2. **DOS** — Domeniul Om și societate, " +
                   "Educație pentru societate\n" +
                   "   - Poezii cu morală, despre igienă, educație rutieră\n" +
-                  "   - Ex: <<Sunt curat ca ghiocelul>>, <<Doi frați cuminți>>",
+                  "   - Ex: «Sunt curat ca ghiocelul», «Doi frați cuminți»",
               },
               {
                 kind: "formator-note",
@@ -124,8 +124,12 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
                 kind: "text",
                 text:
                   "Poeziile recomandate se regăsesc la **pagina 240** " +
-                  "în **Piramida Cunoașterii**.\n\n" +
-                  "### Grupa mică (1 strofă)\n" +
+                  "în **Piramida Cunoașterii**.",
+              },
+              {
+                kind: "text",
+                text:
+                  "**Grupa mică (1 strofă)**\n\n" +
                   "| Temă anuală | Poezie | Autor |\n" +
                   "|-------------|--------|-------|\n" +
                   "| Cine sunt/suntem | Prima zi de grădiniță | Lidia Constantinescu |\n" +
@@ -136,7 +140,7 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
               {
                 kind: "text",
                 text:
-                  "### Grupa mijlocie (2 strofe)\n" +
+                  "**Grupa mijlocie (2 strofe)**\n\n" +
                   "| Temă anuală | Poezie | Autor |\n" +
                   "|-------------|--------|-------|\n" +
                   "| Cine sunt/suntem | Dorotiniță, te-ai trezit | Viorel Cosma |\n" +
@@ -147,7 +151,7 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
               {
                 kind: "text",
                 text:
-                  "### Grupa mare (3 strofe)\n" +
+                  "**Grupa mare (3 strofe)**\n\n" +
                   "| Temă anuală | Poezie | Autor |\n" +
                   "|-------------|--------|-------|\n" +
                   "| Cine sunt/suntem | Doi frați cuminți | Elena Farago |\n" +
@@ -172,15 +176,15 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
           {
             title: "Asociere temă — poezie (grupa mică)",
             description:
-              "Tema <<Cine sunt/suntem>> → <<Prima zi de grădiniță>> de Lidia Constantinescu. " +
-              "Tema <<Cum exprimăm ceea ce simțim>> → <<Mamei>> de Elena Dragoș. " +
-              "DOS (educație pentru societate) → <<Sunt curat ca ghiocelul>> de Grigore Vieru.",
+              "Tema «Cine sunt/suntem» → «Prima zi de grădiniță» de Lidia Constantinescu. " +
+              "Tema «Cum exprimăm ceea ce simțim» → «Mamei» de Elena Dragoș. " +
+              "DOS (educație pentru societate) → «Sunt curat ca ghiocelul» de Grigore Vieru.",
           },
           {
             title: "Doi frați cuminți — poezie universală",
             description:
-              "<<Doi frați cuminți>> de Elena Farago merge atât la DLC " +
-              "(tema <<Cine sunt/suntem>>), cât și la DOS " +
+              "«Doi frați cuminți» de Elena Farago merge atât la DLC " +
+              "(tema «Cine sunt/suntem»), cât și la DOS " +
               "(educație pentru societate) — e o poezie cu morală.",
           },
         ],
@@ -267,18 +271,18 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
               id: "edu-ped-dlc-mem-mq1-5",
               type: "true-false",
               question:
-                "Poezia <<Doi frați cuminți>> de Elena Farago poate fi folosită atât la DLC, cât și la DOS.",
+                "Poezia «Doi frați cuminți» de Elena Farago poate fi folosită atât la DLC, cât și la DOS.",
               correct: true,
               explanation:
-                "Da, <<Doi frați cuminți>> merge atât la DLC (tema " +
-                "<<Cine sunt/suntem>>) cât și la DOS (educație pentru " +
+                "Da, «Doi frați cuminți» merge atât la DLC (tema " +
+                "«Cine sunt/suntem») cât și la DOS (educație pentru " +
                 "societate), fiind o poezie cu morală.",
             },
             {
               id: "edu-ped-dlc-mem-mq1-6",
               type: "multiple-choice",
               question:
-                "Ce poezie se recomandă la grupa mică, tema <<Când, cum și de ce se întâmplă>>?",
+                "Ce poezie se recomandă la grupa mică, tema «Când, cum și de ce se întâmplă»?",
               options: [
                 "Mamei de Elena Dragoș",
                 "Doi frați cuminți de Elena Farago",
@@ -287,8 +291,8 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
               ],
               correctIndex: 2,
               explanation:
-                "La grupa mică, tema <<Când, cum și de ce se întâmplă>>, " +
-                "se recomandă <<Ninge>> de Otilia Cazimir.",
+                "La grupa mică, tema «Când, cum și de ce se întâmplă», " +
+                "se recomandă «Ninge» de Otilia Cazimir.",
             },
             {
               id: "edu-ped-dlc-mem-mq1-7",
@@ -321,7 +325,7 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
               id: "edu-ped-dlc-mem-mq1-9",
               type: "multiple-choice",
               question:
-                "La ce temă anuală de studiu se potrivește poezia <<Sunt curat ca ghiocelul>> de Grigore Vieru?",
+                "La ce temă anuală de studiu se potrivește poezia «Sunt curat ca ghiocelul» de Grigore Vieru?",
               options: [
                 "Cine sunt/suntem",
                 "Cum exprimăm ceea ce simțim",
@@ -330,7 +334,7 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
               ],
               correctIndex: 3,
               explanation:
-                "<<Sunt curat ca ghiocelul>> de Grigore Vieru este o poezie " +
+                "«Sunt curat ca ghiocelul» de Grigore Vieru este o poezie " +
                 "cu morală (igienă), potrivită pentru DOS — Educație " +
                 "pentru societate.",
             },
@@ -388,8 +392,8 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
                 text:
                   "**Informații organizatorice:**\n" +
                   "- Domeniu: Limbă și comunicare, Educarea limbajului\n" +
-                  "- Tema anuală: <<Cine sunt/suntem?>>\n" +
-                  "- Poezia: <<Doi frați cuminți>> de Elena Farago\n" +
+                  "- Tema anuală: «Cine sunt/suntem?»\n" +
+                  "- Poezia: «Doi frați cuminți» de Elena Farago\n" +
                   "- Grupa: 5-6 ani (grupa mare) — 3 strofe\n" +
                   "- Mijloace de învățământ: imagini sugestive din poezie",
               },
@@ -427,8 +431,8 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
                 text:
                   "Educatoarea va anunța **titlul și autorul** poeziei, " +
                   "iar preșcolarii îl vor repeta.\n\n" +
-                  "**Exemplu:** <<Astăzi vom învăța poezia «Doi frați cuminți» " +
-                  "de Elena Farago. Haideți să repetăm împreună titlul!>>",
+                  "**Exemplu:** «Astăzi vom învăța poezia «Doi frați cuminți» " +
+                  "de Elena Farago. Haideți să repetăm împreună titlul!»",
               },
             ],
           },
@@ -488,7 +492,7 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
                   type: "exam-tip",
                   content:
                     "La examen trebuie să descrii metoda legării: " +
-                    "nu sari direct la <<se recită întreaga strofă>>. " +
+                    "nu sari direct la «se recită întreaga strofă». " +
                     "Arată procesul pas cu pas: vers 1, vers 2, legare " +
                     "1+2, vers 3, legare 1+2+3... apoi toată strofa.",
                 },
@@ -525,9 +529,9 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
                   content:
                     "Dacă la examen ai grupa mică, eseul e mai scurt — " +
                     "nu mai scrii despre celelalte strofe. Scrii doar: " +
-                    "<<Se va recita întreaga strofă>>. Pentru mijlocie și mare " +
-                    "adaugi: <<La fel se va proceda cu celelalte strofe, " +
-                    "urmând ca la final să se recite întreaga poezie>>.",
+                    "«Se va recita întreaga strofă». Pentru mijlocie și mare " +
+                    "adaugi: «La fel se va proceda cu celelalte strofe, " +
+                    "urmând ca la final să se recite întreaga poezie».",
                 },
               },
             ],
@@ -569,8 +573,8 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
                     "Pentru a desfășura activitatea de memorizare la grupa de " +
                     "vârstă **5-6 ani**, domeniul experiențial **Limbă și " +
                     "comunicare**, Educarea limbajului, având ca temă anuală " +
-                    "de studiu **<<Cine sunt/suntem?>>**, poezia **<<Doi frați " +
-                    "cuminți>>** de Elena Farago, educatoarea va introduce " +
+                    "de studiu **«Cine sunt/suntem?»**, poezia **«Doi frați " +
+                    "cuminți»** de Elena Farago, educatoarea va introduce " +
                     "preșcolarii în activitate prin aducerea unor **imagini " +
                     "sugestive** din conținutul poeziei.\n\n" +
                     "Educatoarea va anunța **titlul și autorul** poeziei, " +
@@ -596,8 +600,8 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
           {
             title: "Doi frați cuminți — DLC + DOS",
             description:
-              "Poezia <<Doi frați cuminți>> de Elena Farago funcționează " +
-              "atât la DLC (tema <<Cine sunt/suntem>>), cât și la DOS " +
+              "Poezia «Doi frați cuminți» de Elena Farago funcționează " +
+              "atât la DLC (tema «Cine sunt/suntem»), cât și la DOS " +
               "(educație pentru societate). Înveți un singur eseu, " +
               "schimbi doar domeniul în funcție de cerință.",
           },
@@ -605,7 +609,7 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
             title: "Adaptare la grupa mică",
             description:
               "La grupa mică (3-4 ani): aceeași structură, dar " +
-              "eseul se oprește la <<Se va recita întreaga strofă>> " +
+              "eseul se oprește la «Se va recita întreaga strofă» " +
               "(o singură strofă). Nu mai adaugi pașii pentru " +
               "celelalte strofe.",
           },
@@ -613,9 +617,9 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
             title: "Adaptare la DOS — Sunt curat ca ghiocelul",
             description:
               "Dacă cerința e la DOS, alegi o poezie cu morală: " +
-              "<<Sunt curat ca ghiocelul>> de Grigore Vieru (grupa mică), " +
-              "<<Puișorul Moțat>> de Elena Farago (grupa mijlocie), " +
-              "<<Doi frați cuminți>> de Elena Farago (grupa mare).",
+              "«Sunt curat ca ghiocelul» de Grigore Vieru (grupa mică), " +
+              "«Puișorul Moțat» de Elena Farago (grupa mijlocie), " +
+              "«Doi frați cuminți» de Elena Farago (grupa mare).",
           },
         ],
         keyPoints: [
@@ -833,7 +837,7 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
           id: "edu-ped-dlc-mem-fq2",
           type: "multiple-choice",
           question:
-            "Ce poezie se recomandă la grupa mare, tema <<Cine sunt/suntem>>?",
+            "Ce poezie se recomandă la grupa mare, tema «Cine sunt/suntem»?",
           options: [
             "Mamei de Elena Dragoș",
             "Doi frați cuminți de Elena Farago",
@@ -842,8 +846,8 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
           ],
           correctIndex: 1,
           explanation:
-            "La grupa mare, tema <<Cine sunt/suntem>>, se recomandă " +
-            "<<Doi frați cuminți>> de Elena Farago.",
+            "La grupa mare, tema «Cine sunt/suntem», se recomandă " +
+            "«Doi frați cuminți» de Elena Farago.",
         },
         {
           id: "edu-ped-dlc-mem-fq3",
@@ -880,7 +884,7 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
           id: "edu-ped-dlc-mem-fq5",
           type: "multiple-choice",
           question:
-            "O educatoare primește cerința: memorizare, grupa mijlocie, DLC, tema <<Când, cum și de ce se întâmplă>>. Ce poezie poate alege?",
+            "O educatoare primește cerința: memorizare, grupa mijlocie, DLC, tema «Când, cum și de ce se întâmplă». Ce poezie poate alege?",
           options: [
             "Doi frați cuminți de Elena Farago",
             "Mamei de Elena Dragoș",
@@ -889,8 +893,8 @@ export const eduPedagogieDlcMemorizareLessons: Lesson[] = [
           ],
           correctIndex: 2,
           explanation:
-            "La grupa mijlocie, DLC, tema <<Când, cum și de ce se întâmplă>>, " +
-            "se recomandă <<Ghiocelul>> de Sorin Comăniță (sau <<Primăvara>> " +
+            "La grupa mijlocie, DLC, tema «Când, cum și de ce se întâmplă», " +
+            "se recomandă «Ghiocelul» de Sorin Comăniță (sau «Primăvara» " +
             "de Elena Dragoș).",
         },
         {
