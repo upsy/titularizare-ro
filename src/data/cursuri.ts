@@ -169,4 +169,20 @@ export const courseSessions: CourseSession[] = [
     category: "Metodica",
     examSubject: "Subiectul III",
   },
+  {
+    id: "curs-2026-03-06",
+    date: "2026-03-06",
+    displayDate: "6 Martie 2026",
+    title: "Memorizarea — model de eseu (Subiectul III, Ex. 1)",
+    description:
+      "Definiția memorizării (formarea cunoștințelor și deprinderilor), " +
+      "diferențierea pe grupe (mică: 1 strofă, mijlocie: 2, mare: 3), " +
+      "domenii DLC și DOS, poezii recomandate (Piramida Cunoașterii p. 240), " +
+      "structura eseului cu metoda recitării vers cu vers (legarea), " +
+      "model complet de eseu pe «Doi frați cuminți» de Elena Farago.",
+    topicIds: ["edu-ped-dlc-memorizare"],
+    status: "complete",
+    category: "Metodica",
+    examSubject: "Subiectul III",
+  },
 ];
