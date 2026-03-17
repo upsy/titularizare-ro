@@ -125,6 +125,17 @@ export const eduPedagogieJocDidacticLessons: Lesson[] = [
                     "e o problemă!",
                 },
               },
+              {
+                kind: "formator-note",
+                formatorNote: {
+                  type: "exam-tip",
+                  content:
+                    "La jocul didactic NU se scriu obiective, dimensiuni " +
+                    "sau comportamente — doar componentele de mai sus! " +
+                    "Alte modalități nu au nici scop, nici componente. " +
+                    "Jocul didactic are exact cât am enumerat, nimic în plus.",
+                },
+              },
             ],
           },
           {
@@ -893,15 +904,15 @@ export const eduPedagogieJocDidacticLessons: Lesson[] = [
             "Care este ordinea corectă a componentelor în eseul despre jocul didactic?",
           options: [
             "Reguli → scop → sarcină → materiale",
-            "Definiție → scop → sarcină → reguli → elemente → materiale → joc de probă → variante → complicare",
+            "Definiție → introducere → scop → sarcină → reguli → elemente → materiale → joc de probă → variante → complicare",
             "Materiale → reguli → scop → complicare",
             "Sarcină → definiție → reguli → variante",
           ],
           correctIndex: 1,
           explanation:
-            "Ordinea corectă: definiție → scop → sarcină didactică → reguli → " +
-            "elemente de joc → materiale → introducere cu joc de probă → " +
-            "variante → complicare → aprecieri.",
+            "Ordinea corectă: definiție → introducere (titlu, domeniu, vârstă) → " +
+            "scop → sarcină didactică → reguli → elemente de joc → materiale → " +
+            "surpriză + joc de probă → variante → complicare → aprecieri.",
         },
         {
           id: "edu-ped-jd-fq3",
