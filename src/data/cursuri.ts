@@ -201,4 +201,20 @@ export const courseSessions: CourseSession[] = [
     category: "Metodica",
     examSubject: "Subiectul III",
   },
+  {
+    id: "curs-2026-03-10",
+    date: "2026-03-10",
+    displayDate: "10 Martie 2026",
+    title: "Jocul didactic — model de eseu (Subiectul III, Ex. 1)",
+    description:
+      "Definiția jocului didactic (modalitate specifică, pregătește pentru învățământul primar), " +
+      "cele 7 componente (scop, sarcină, reguli, elemente de joc, materiale, acțiune de joc, complicare), " +
+      "distincția material didactic vs. mijloc de învățământ, semnele distinctive " +
+      "(jocul de probă + complicarea jocului), variante pe grupe (practică vs. examen: mereu 2), " +
+      "model complet de eseu pe «Trăistuța cu povești» (DLC, 4-5 ani, Diagrama Venn la complicare).",
+    topicIds: ["edu-ped-joc-didactic"],
+    status: "complete",
+    category: "Metodica",
+    examSubject: "Subiectul III",
+  },
 ];
