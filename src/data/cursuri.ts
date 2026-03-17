@@ -185,4 +185,20 @@ export const courseSessions: CourseSession[] = [
     category: "Metodica",
     examSubject: "Subiectul III",
   },
+  {
+    id: "curs-2026-03-09",
+    date: "2026-03-09",
+    displayDate: "9 Martie 2026",
+    title: "Exercițiul cu material individual — model de eseu (Subiectul III, Ex. 1)",
+    description:
+      "Definiția exercițiului cu material individual (deprinderi de muncă independentă + limbaj matematic), " +
+      "exclusiv Științe/Activitate matematică, limitele numerației pe grupe (mică: 1-3, mijlocie: 1-5, mare: 1-10), " +
+      "cele două sarcini de lucru (formarea mulțimilor + raportare număr-cantitate), " +
+      "etapa de retenție și transfer (greșeala intenționată la tabla magnetică), " +
+      "model complet de eseu pe tema «Spune câte sunt».",
+    topicIds: ["edu-ped-stiinte-exercitiu"],
+    status: "complete",
+    category: "Metodica",
+    examSubject: "Subiectul III",
+  },
 ];
