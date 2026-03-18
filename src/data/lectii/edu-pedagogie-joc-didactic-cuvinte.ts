@@ -85,7 +85,7 @@ export const eduPedagogieJocDidacticCuvinteLessons: Lesson[] = [
                     "La grupa mare copiii văd literele, dar tu pui accent " +
                     "pe sunet. Motricitatea fină a degetelor încă nu este " +
                     "formată — dacă investești greșit, " +
-                    "învățătoarea nu mai poate corecta.",
+                    "învățătoarea nu mai știe ce să facă cu ei.",
                 },
               },
             ],
@@ -533,7 +533,7 @@ export const eduPedagogieJocDidacticCuvinteLessons: Lesson[] = [
           {
             title: "Exemple de cuvinte pentru jetoane",
             description:
-              "Carte, broască, ricou, albină — imagini pe jetoane. " +
+              "Carte, broască, tricou, albină — imagini pe jetoane. " +
               "Copiii recunosc cuvântul, despart în silabe (al-bi-nă), " +
               "identifică sunetul (unde aude sunetul A?).",
           },
@@ -794,17 +794,17 @@ export const eduPedagogieJocDidacticCuvinteLessons: Lesson[] = [
           id: "edu-ped-jdc-fq5",
           type: "multiple-choice",
           question:
-            "La complicarea jocului, copiii trebuie să spună cuvinte care:",
+            "Cum demonstrează educatoarea regulile jocului «Trăistuța cuvintelor»?",
           options: [
-            "Rimează cu un cuvânt dat",
-            "Încep sau se termină cu sunetul indicat de educatoare",
-            "Au același număr de silabe",
-            "Sunt ilustrate pe jetoane",
+            "Prin explicare verbală, fără demonstrație practică",
+            "Prin desfășurarea jocului de probă",
+            "Prin distribuirea unei fișe cu instrucțiuni",
+            "Prin vizionarea unui film educativ",
           ],
           correctIndex: 1,
           explanation:
-            "La complicare, preșcolarii spun cuvinte care încep " +
-            "sau se termină cu sunetul indicat de către educatoare.",
+            "Educatoarea va explica și demonstra regulile și sarcinile " +
+            "jocului didactic prin desfășurarea jocului de probă.",
         },
         {
           id: "edu-ped-jdc-fq6",
