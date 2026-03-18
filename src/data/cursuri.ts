@@ -217,4 +217,19 @@ export const courseSessions: CourseSession[] = [
     category: "Metodica",
     examSubject: "Subiectul III",
   },
+  {
+    id: "curs-2026-03-11",
+    date: "2026-03-11",
+    displayDate: "11 Martie 2026",
+    title: "Jocul didactic (continuare) — Trăistuța cuvintelor (Subiectul III, Ex. 1)",
+    description:
+      "Adaptarea eseului cu povești la poezii (un singur cuvânt se schimbă), " +
+      "sunete vs. litere la grupa mare, reguli de formulare (nu «DLC», nu «eu voi apela»), " +
+      "model complet de eseu «Trăistuța cuvintelor» (DLC, 5-6 ani, fonetică și vocabular), " +
+      "complicare: cuvinte care încep/se termină cu sunetul indicat.",
+    topicIds: ["edu-ped-joc-didactic-cuvinte"],
+    status: "complete",
+    category: "Metodica",
+    examSubject: "Subiectul III",
+  },
 ];

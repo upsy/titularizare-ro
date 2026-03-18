@@ -23,6 +23,7 @@ import { eduPedagogieStiinteObservareLessons } from "./edu-pedagogie-stiinte-obs
 import { eduPedagogieDlcMemorizareLessons } from "./edu-pedagogie-dlc-memorizare";
 import { eduPedagogieStiinteExercitiuLessons } from "./edu-pedagogie-stiinte-exercitiu";
 import { eduPedagogieJocDidacticLessons } from "./edu-pedagogie-joc-didactic";
+import { eduPedagogieJocDidacticCuvinteLessons } from "./edu-pedagogie-joc-didactic-cuvinte";
 
 export const allLessons: Lesson[] = [
   ...eduLimbaComunicareLessons,
@@ -49,6 +50,7 @@ export const allLessons: Lesson[] = [
   ...eduPedagogieDlcMemorizareLessons,
   ...eduPedagogieStiinteExercitiuLessons,
   ...eduPedagogieJocDidacticLessons,
+  ...eduPedagogieJocDidacticCuvinteLessons,
 ];
 
 export function getLessonByTopicId(topicId: string): Lesson | undefined {
