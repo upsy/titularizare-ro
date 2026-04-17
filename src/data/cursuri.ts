@@ -36,6 +36,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    driveFileId: "1xhcSoq3EuZSdwdDTaEC_ixSZ9oLr0X8V",
     audioUrl: "/audio/lectii/original/2026-02-19.mp3",
   },
   {
@@ -49,6 +50,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    driveFileId: "1XzyHtcwRecJDr3IzF-eltX4UaVDZItVF",
     audioUrl: "/audio/lectii/original/2026-02-20.mp3",
   },
   {
@@ -63,6 +65,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    driveFileId: "1iyW-PBIJkIniGguM3CGFRfxFcxCXLbtv",
     audioUrl: "/audio/lectii/original/2026-02-23.mp3",
   },
   {
@@ -77,6 +80,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Limba Română",
     examSubject: "Subiectul I",
+    driveFileId: "1XTV0zTVx-RRbYkNn35_20IjZwOWADlOG",
     audioUrl: "/audio/lectii/original/2026-02-24.mp3",
   },
   {
@@ -102,6 +106,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Limba Română",
     examSubject: "Subiectul I",
+    driveFileId: "1XTV0zTVx-RRbYkNn35_20IjZwOWADlOG",
     audioUrl: "/audio/lectii/original/2026-02-24.mp3",
   },
   {
@@ -117,6 +122,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    driveFileId: "1-Ar6Da2_q7DXmBDiQRBhQDKa-owVNciU",
     audioUrl: "/audio/lectii/original/2026-02-25.mp3",
   },
   {
@@ -132,6 +138,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    driveFileId: "1nRWKi4EUEq4FAQvM2SuuSdGBDCGwCZba",
     audioUrl: "/audio/lectii/original/2026-02-26.mp3",
   },
   {
@@ -147,6 +154,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    driveFileId: "1RaD7BXexvdrRDvhEcUvp10FjLhMqvW7w",
     audioUrl: "/audio/lectii/original/2026-02-27.mp3",
   },
   {
@@ -163,6 +171,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    driveFileId: "1pZKSIwGzW0f-2GYflfQtVPbKRN_hJ1qe",
     audioUrl: "/audio/lectii/original/2026-03-03.mp3",
   },
   {
@@ -180,6 +189,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    driveFileId: "1A9LkD_vloCpjr3oSSQEn3QoyYgGDRlNG",
     audioUrl: "/audio/lectii/original/2026-03-05.mp3",
   },
   {
@@ -197,6 +207,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    driveFileId: "1TD9am2742yh6KwGrqDZ6LnGwx--fXL3A",
     audioUrl: "/audio/lectii/original/2026-03-06.mp3",
   },
   {
@@ -214,6 +225,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    driveFileId: "1VNW4DfDRcfxxAknFcracl2GLmBjzFNRp",
     audioUrl: "/audio/lectii/original/2026-03-09.mp3",
   },
   {
@@ -231,6 +243,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    driveFileId: "1IZ0SFC0UFtxf9ZP2uLZk5-Y1r3eMp0Tx",
     audioUrl: "/audio/lectii/original/2026-03-10.mp3",
   },
   {
@@ -247,6 +260,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    driveFileId: "1Gc2EpUaW6FjjNEdLTEzJG-Wq-GKN9Jua",
     audioUrl: "/audio/lectii/original/2026-03-11.mp3",
   },
 ];

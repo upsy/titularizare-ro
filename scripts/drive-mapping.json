@@ -1,18 +1,18 @@
 {
-  "_comment": "Map each course session date (ISO YYYY-MM-DD) to its Google Drive file ID. Get the file ID from the share URL: https://drive.google.com/file/d/FILE_ID/view. Leave the value empty to skip that date. Parent folder: https://drive.google.com/drive/folders/1zCzmqgDzD4ywAsjsjOjI5cltvy9nvtM-",
+  "_comment": "Map each course session date (ISO YYYY-MM-DD) to its Google Drive file ID. Parent folder: https://drive.google.com/drive/folders/1zCzmqgDzD4ywAsjsjOjI5cltvy9nvtM-",
   "mapping": {
-    "2026-02-19": "",
-    "2026-02-20": "",
-    "2026-02-23": "",
-    "2026-02-24": "",
-    "2026-02-25": "",
-    "2026-02-26": "",
-    "2026-02-27": "",
-    "2026-03-03": "",
-    "2026-03-05": "",
-    "2026-03-06": "",
-    "2026-03-09": "",
-    "2026-03-10": "",
-    "2026-03-11": ""
+    "2026-02-19": "1xhcSoq3EuZSdwdDTaEC_ixSZ9oLr0X8V",
+    "2026-02-20": "1XzyHtcwRecJDr3IzF-eltX4UaVDZItVF",
+    "2026-02-23": "1iyW-PBIJkIniGguM3CGFRfxFcxCXLbtv",
+    "2026-02-24": "1XTV0zTVx-RRbYkNn35_20IjZwOWADlOG",
+    "2026-02-25": "1-Ar6Da2_q7DXmBDiQRBhQDKa-owVNciU",
+    "2026-02-26": "1nRWKi4EUEq4FAQvM2SuuSdGBDCGwCZba",
+    "2026-02-27": "1RaD7BXexvdrRDvhEcUvp10FjLhMqvW7w",
+    "2026-03-03": "1pZKSIwGzW0f-2GYflfQtVPbKRN_hJ1qe",
+    "2026-03-05": "1A9LkD_vloCpjr3oSSQEn3QoyYgGDRlNG",
+    "2026-03-06": "1TD9am2742yh6KwGrqDZ6LnGwx--fXL3A",
+    "2026-03-09": "1VNW4DfDRcfxxAknFcracl2GLmBjzFNRp",
+    "2026-03-10": "1IZ0SFC0UFtxf9ZP2uLZk5-Y1r3eMp0Tx",
+    "2026-03-11": "1Gc2EpUaW6FjjNEdLTEzJG-Wq-GKN9Jua"
   }
 }
