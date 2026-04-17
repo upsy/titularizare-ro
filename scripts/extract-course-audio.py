@@ -68,7 +68,7 @@ def main() -> None:
                 ffmpeg, "-y", "-loglevel", "error",
                 "-i", str(video),
                 "-vn", "-ac", "1", "-ar", "22050",
-                "-c:a", "libmp3lame", "-b:a", "64k",
+                "-c:a", "libmp3lame", "-b:a", "24k",
                 str(mp3),
             ],
             check=True,

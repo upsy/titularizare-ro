@@ -36,8 +36,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# large MP3 recordings (extracted from Drive via scripts/extract-course-audio.sh)
-/public/audio/lectii/original/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
