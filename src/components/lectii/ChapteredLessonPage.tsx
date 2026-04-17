@@ -26,6 +26,7 @@ import { ChapterSection } from "./ChapterSection";
 import { QuizVariantSection } from "./QuizVariantSection";
 import { QuizSection } from "./QuizSection";
 import { AudioPlayerBar } from "./AudioPlayerBar";
+import { OriginalRecordings } from "./OriginalRecordings";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/Accordion";
 import { generateFlashcardDeck } from "@/lib/flashcard-generator";
 import { FlashcardPlayer } from "@/components/flashcards/FlashcardPlayer";
@@ -238,6 +239,8 @@ export function ChapteredLessonPage({ lesson, backTo }: ChapteredLessonPageProps
             </>
           )}
         </div>
+
+        <OriginalRecordings topicId={lesson.topicId} />
 
         {/* Objectives — border-l accent, no card */}
         <div className="border-l-3 border-blue-500 pl-4 py-3">

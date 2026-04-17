@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { QuizSection } from "./QuizSection";
 import { ChapteredLessonPage } from "./ChapteredLessonPage";
+import { OriginalRecordings } from "./OriginalRecordings";
 import { renderSectionContent, renderFormattedText } from "./formatters";
 import { cn } from "@/lib/utils";
 
@@ -65,6 +66,8 @@ export function LessonPage({ lesson, backTo }: LessonPageProps) {
           </Badge>
           <Badge variant="default">Lecție</Badge>
         </div>
+
+        <OriginalRecordings topicId={lesson.topicId} />
 
         {/* Objectives */}
         <Card className="border-l-4 border-l-blue-500">

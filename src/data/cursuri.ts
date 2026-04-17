@@ -18,6 +18,9 @@ export interface CourseSession {
   status: "complete" | "placeholder";
   category: ExamCategory;
   examSubject: ExamSubject;
+  driveFileId?: string;
+  audioUrl?: string;
+  duration?: string;
 }
 
 export const courseSessions: CourseSession[] = [
@@ -33,6 +36,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    audioUrl: "/audio/lectii/original/2026-02-19.mp3",
   },
   {
     id: "curs-2026-02-20",
@@ -45,6 +49,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    audioUrl: "/audio/lectii/original/2026-02-20.mp3",
   },
   {
     id: "curs-2026-02-23",
@@ -58,6 +63,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    audioUrl: "/audio/lectii/original/2026-02-23.mp3",
   },
   {
     id: "curs-2026-02-24",
@@ -71,6 +77,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Limba Română",
     examSubject: "Subiectul I",
+    audioUrl: "/audio/lectii/original/2026-02-24.mp3",
   },
   {
     id: "curs-2026-02-24-bonus",
@@ -95,6 +102,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Limba Română",
     examSubject: "Subiectul I",
+    audioUrl: "/audio/lectii/original/2026-02-24.mp3",
   },
   {
     id: "curs-2026-02-25",
@@ -109,6 +117,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    audioUrl: "/audio/lectii/original/2026-02-25.mp3",
   },
   {
     id: "curs-2026-02-26",
@@ -123,6 +132,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    audioUrl: "/audio/lectii/original/2026-02-26.mp3",
   },
   {
     id: "curs-2026-02-27",
@@ -137,6 +147,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    audioUrl: "/audio/lectii/original/2026-02-27.mp3",
   },
   {
     id: "curs-2026-03-03",
@@ -152,6 +163,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    audioUrl: "/audio/lectii/original/2026-03-03.mp3",
   },
   {
     id: "curs-2026-03-05",
@@ -168,6 +180,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    audioUrl: "/audio/lectii/original/2026-03-05.mp3",
   },
   {
     id: "curs-2026-03-06",
@@ -184,6 +197,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    audioUrl: "/audio/lectii/original/2026-03-06.mp3",
   },
   {
     id: "curs-2026-03-09",
@@ -200,6 +214,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    audioUrl: "/audio/lectii/original/2026-03-09.mp3",
   },
   {
     id: "curs-2026-03-10",
@@ -216,6 +231,7 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    audioUrl: "/audio/lectii/original/2026-03-10.mp3",
   },
   {
     id: "curs-2026-03-11",
@@ -231,5 +247,14 @@ export const courseSessions: CourseSession[] = [
     status: "complete",
     category: "Metodica",
     examSubject: "Subiectul III",
+    audioUrl: "/audio/lectii/original/2026-03-11.mp3",
   },
 ];
+
+export function getSessionsForTopic(topicId: string): CourseSession[] {
+  return courseSessions.filter((s) => s.topicIds.includes(topicId));
+}
+
+export function getDriveVideoUrl(fileId: string): string {
+  return `https://drive.google.com/file/d/${fileId}/view`;
+}

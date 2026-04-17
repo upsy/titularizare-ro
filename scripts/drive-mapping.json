@@ -1,0 +1,18 @@
+{
+  "_comment": "Map each course session date (ISO YYYY-MM-DD) to its Google Drive file ID. Get the file ID from the share URL: https://drive.google.com/file/d/FILE_ID/view. Leave the value empty to skip that date. Parent folder: https://drive.google.com/drive/folders/1zCzmqgDzD4ywAsjsjOjI5cltvy9nvtM-",
+  "mapping": {
+    "2026-02-19": "",
+    "2026-02-20": "",
+    "2026-02-23": "",
+    "2026-02-24": "",
+    "2026-02-25": "",
+    "2026-02-26": "",
+    "2026-02-27": "",
+    "2026-03-03": "",
+    "2026-03-05": "",
+    "2026-03-06": "",
+    "2026-03-09": "",
+    "2026-03-10": "",
+    "2026-03-11": ""
+  }
+}
