@@ -1,7 +1,15 @@
+"use client";
+
 import { GraduationCap } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function Footer() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/login")) {
+    return null;
+  }
+
   return (
     <footer className="border-t border-border bg-white">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">

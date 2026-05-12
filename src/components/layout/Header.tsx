@@ -11,6 +11,10 @@ export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  if (pathname?.startsWith("/login")) {
+    return null;
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">

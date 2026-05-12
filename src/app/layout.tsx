@@ -16,6 +16,16 @@ export const metadata: Metadata = {
   },
   description:
     "Ghid complet pentru pregătirea examenului de titularizare 2026 - Educatoare. Calendar, programa, resurse și tracking progres.",
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
 };
 
 export default function RootLayout({
